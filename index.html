@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru" ng-app="purchaseApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Тестовое задание на вакансию front-end программист</title>
+	<meta name="author" content="Dobrovoimaster"/>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="jquery-3.2.1.js"></script>
+</head>
+<body ng-controller="purchaseController">
+<div class="container">
+	<h1>
+		Тестовое задание на вакансию front-end программист
+	</h1>
+	<div class="tabs">
+		<div style="float:right;">
+			<form>
+				&nbsp;Поиск
+				<input type="text" class="form-control" ng-model="searchFish">
+			</form>
+		</div>
+		<input id="tab1" type="radio" name="tabs" checked>
+		<label for="tab1" title="Тендеры">Тендеры</label>
+		<input id="tab2" type="radio" name="tabs">
+		<label for="tab2" title=Компании">Компании</label>
+		<section id="content-tab1">
+			<table cellpadding="0" cellspacing="0" border="1" class="sortable">
+				<thead>
+				<tr>
+					<th>Индекс</th>
+					<th>
+						<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+							<h3>Название
+								<span ng-show="sortType != 'name'" class="bg"></span>
+								<span ng-show="sortType == 'name' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'name' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+							<h3>Цена
+								<span ng-show="sortType != 'price'" class="bg"></span>
+								<span ng-show="sortType == 'price' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'price' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'phase'; sortReverse = !sortReverse">
+							<h3>Фаза
+								<span ng-show="sortType != 'phase'" class="bg"></span>
+								<span ng-show="sortType == 'phase' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'phase' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'publicationdate'; sortReverse = !sortReverse">
+							<h3>Дата публикации
+								<span ng-show="sortType != 'publicationdate'" class="bg"></span>
+								<span ng-show="sortType == 'publicationdate' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'publicationdate' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'regionName'; sortReverse = !sortReverse">
+							<h3>Регион
+								<span ng-show="sortType != 'rregionName'" class="bg"></span>
+								<span ng-show="sortType == 'regionName' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'regionName' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'subcategor'; sortReverse = !sortReverse">
+							<h3>Подкатегория
+								<span ng-show="sortType != 'subcategor'" class="bg"></span>
+								<span ng-show="sortType == 'subcategor' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'subcategor' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="item2 in tend.data.tenders | orderBy:sortType:sortReverse| filter:searchFish">
+					<td>{{ $index + 1 }}</td>
+					<td>{{item2.name}}</td>
+					<td>{{item2.price}}</td>
+					<td>{{item2.phase}}</td>
+					<td>{{item2.publicationdate}}</td>
+					<td>{{item2.regionName}}</td>
+					<td>{{item2.subcategory}}</td>
+
+				</tr>
+
+
+				</tbody>
+			</table>
+		</section>
+		<section id="content-tab2">
+			<table cellpadding="0" cellspacing="0" border="1" class="sortable">
+				<thead>
+				<tr>
+					<th>Индекс</th>
+					<th>
+						<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+							<h3>Название
+								<span ng-show="sortType != 'name'" class="bg"></span>
+								<span ng-show="sortType == 'name' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'name' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'inn'; sortReverse = !sortReverse">
+							<h3>ИНН
+								<span ng-show="sortType != 'inn'" class="bg"></span>
+								<span ng-show="sortType == 'inn' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'inn' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'kpp'; sortReverse = !sortReverse">
+							<h3>КПП
+								<span ng-show="sortType != 'kpp'" class="bg"></span>
+								<span ng-show="sortType == 'kpp' && !sortReverse" class="desc"></span>
+								<span ng-show="sortType == 'kpp' && sortReverse" class="asc"></span>
+							</h3>
+						</a>
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="item in comp.data.companies | orderBy:sortType:sortReverse| filter:searchFish">
+					<td>{{ $index + 1 }}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.inn}}</td>
+					<td>{{item.kpp}}</td>
+				</tr>
+
+
+				</tbody>
+			</table>
+		</section>
+	</div>
+</div>
+<script type="text/javascript">
+	var purchaseApp = angular.module("purchaseApp", []);
+	purchaseApp.controller("purchaseController", function ($scope, $http) {
+		$http.get("https://raw.githubusercontent.com/avallakh/InitGroupTST/master/Table1.json").then(
+			function (data) {
+				$scope.tend = data;
+				//console.log($scope.tend);
+			}
+		);
+		$http.get("https://raw.githubusercontent.com/avallakh/InitGroupTST/master/Table2.json").then(
+			function (data) {
+				$scope.comp = data;
+				//console.log($scope.tend);
+			}
+		);
+		$scope.sortType = 'name'; // значение сортировки по умолчанию
+		$scope.sortReverse = false;  // обратная сортировка
+		$scope.searchFish = '';     // значение поиска по умолчанию
+	});
+</script>
+</body>
